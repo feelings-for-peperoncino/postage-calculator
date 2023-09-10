@@ -51,3 +51,4 @@ function updateTotal(index) {
 }
 
 
+

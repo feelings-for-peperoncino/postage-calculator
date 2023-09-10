@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +31,15 @@
     }
 
     /* テーブル内のセルのテキストを上下の中央揃えにする */
-    .table th, .table td {
+    .table th,
+    .table td {
       vertical-align: middle;
     }
 
     /* スクロール可能なエリアを作成 */
     .scrollable-container {
-      max-height: 300px; /* 適切な高さに調整してください */
+      max-height: 300px;
+      /* 適切な高さに調整してください */
       overflow-y: auto;
     }
 
@@ -44,8 +47,31 @@
     .input-container {
       padding: 10px;
     }
+
+    /* 合計通数と合計金額を画面下部に固定 */
+    .fixed-footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #fff;
+      /* 背景色を設定 */
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      /* 上部にボーダーを追加 */
+      z-index: 1;
+      /* 他の要素より前に表示 */
+    }
+
+    /* 下部スペースを確保 */
+    .fixed-footer-placeholder {
+      height: 100px;
+      /* 適切な高さに調整 */
+    }
   </style>
 </head>
+
 <body>
   <h1>郵便料金計算機</h1>
   <div class="container">
@@ -93,13 +119,27 @@
         </script>
       </tbody>
     </table>
-    <h2>合計通数</h2>
-    <h2 class="total-quantity">0</h2>
-    <h2>合計金額</h2>
-    <h2 class="grand-total">0円</h2>
   </div>
+  <div class="container">
+    <div class="row">
+      <!-- 下部スペースを確保 -->
+      <div class="col fixed-footer-placeholder"></div>
+    </div>
+    <div class="row fixed-footer">
+      <div class="col">
+        <h2>合計通数</h2>
+        <h2 class="total-quantity">0</h2>
+      </div>
+      <div class="col">
+        <h2>合計金額</h2>
+        <h2 class="grand-total">0円</h2>
+      </div>
+    </div>
+  </div>
+  
 
   <!-- JavaScriptファイルを読み込む -->
   <script src="js/script.js"></script>
 </body>
+
 </html>
