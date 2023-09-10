@@ -9,6 +9,13 @@ priceElements.forEach((priceElement, index) => {
 });
 
 quantityInputs.forEach((quantityInput, index) => {
+  // ユーザーが入力欄をクリックしたら、0をクリアする
+  quantityInput.addEventListener('click', () => {
+    if (quantityInput.value === '0') {
+      quantityInput.value = '';
+    }
+  });
+
   quantityInput.addEventListener('input', () => {
     updateTotal(index);
   });
@@ -24,8 +31,8 @@ function updateTotal(index) {
   // 金額の値を取得
   const priceValue = parseFloat(priceElement.getAttribute('data-value'));
 
-  // 通数を取得
-  const quantity = parseInt(quantityElement.value);
+  // 通数を取得し、空白の場合は0に設定
+  const quantity = parseInt(quantityElement.value) || 0;
 
   // 合計金額を計算
   const total = priceValue * quantity;
@@ -36,7 +43,7 @@ function updateTotal(index) {
   // 合計通数を更新
   let totalQuantity = 0;
   quantityInputs.forEach((input) => {
-    totalQuantity += parseInt(input.value);
+    totalQuantity += parseInt(input.value) || 0;
   });
   totalQuantityElement.textContent = totalQuantity;
 
@@ -49,6 +56,4 @@ function updateTotal(index) {
   // 金額を表示する際に小数点以下の ".00" を削除して表示
   grandTotalElement.textContent = grandTotal === Math.floor(grandTotal) ? grandTotal + '円' : grandTotal.toFixed(2) + '円';
 }
-
-
 
