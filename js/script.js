@@ -56,4 +56,3 @@ function updateTotal(index) {
   // 金額を表示する際に小数点以下の ".00" を削除して表示
   grandTotalElement.textContent = grandTotal === Math.floor(grandTotal) ? grandTotal + '円' : grandTotal.toFixed(2) + '円';
 }
-
