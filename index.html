@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,8 @@
     input {
       margin: 10px;
       padding: 5px;
-      width: 100px; /* 4桁入力に合わせて広げる */
+      width: 100px;
+      /* 4桁入力に合わせて広げる */
       text-align: center;
     }
 
@@ -34,8 +36,22 @@
       font-weight: bold;
       font-size: 18px;
     }
+
+    /* スクロール可能なエリアを作成 */
+    .scrollable-container {
+      max-height: 70vh;
+      /* ビューポートの70%の高さに制限 */
+      overflow-y: auto;
+      /* 縦スクロールを有効にする */
+    }
+
+    /* input要素を調整 */
+    .input-container {
+      padding: 10px;
+    }
   </style>
 </head>
+
 <body>
   <h1>郵便料金計算機</h1>
   <div class="container">
@@ -70,7 +86,11 @@
                 <td>${info.text}</td>
                 <td class="price" data-value="${info.rate}">${info.rate}円</td>
                 <td class="quantity">
-                  <input type="number" min="0" value="0" class="quantity-input" data-index="${index}">
+                  <div class="scrollable-container">
+  <div class="input-container">
+    <input type="number" min="0" value="0" class="quantity-input" data-index="${index}" inputmode="numeric">
+  </div>
+</div>
                 </td>
                 <td class="total">0円</td>
               </tr>
@@ -88,5 +108,5 @@
   <!-- JavaScriptファイルを読み込む -->
   <script src="js/script.js"></script>
 </body>
-</html>
 
+</html>
